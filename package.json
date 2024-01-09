@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier:base": "prettier --parser typescript --single-quote",
+    "prettier:check": "pnpm run prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
+    "prettier:write": "pnpm run prettier:base -- --write \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "@kinde-oss/kinde-auth-nextjs": "^2.1.0",
@@ -33,6 +36,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "postcss": "^8",
+    "prettier": "^3.1.1",
     "prisma": "5.7.1",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
