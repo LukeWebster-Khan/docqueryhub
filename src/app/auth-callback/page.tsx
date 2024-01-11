@@ -6,10 +6,9 @@ import { Loader2 } from 'lucide-react'
 
 const Page = () => {
     const router = useRouter()
-
     const searchParams = useSearchParams()
     const origin = searchParams.get('origin')
-    trpc.authCallback.useQuery(undefined, {
+   trpc.authCallback.useQuery(undefined, {
         onSuccess: ({success}) => {
             if(success){
                 // user is synced
@@ -17,13 +16,16 @@ const Page = () => {
             }
         },
         onError : (err) => {
+        console.log(err, 'Error')
+
             if(err.data?.code === "UNAUTHORIZED") {
+                console.log('error has occured')
                 router.push("/sign-in")
             }
         },
         retry: true,
         retryDelay: 10000,
-    })
+    }) 
 
     return (
         <div className='w-full mt-24 flex justify-center'>
