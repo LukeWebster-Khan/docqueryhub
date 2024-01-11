@@ -6,7 +6,7 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 export const appRouter = router({
   authCallback: publicProcedure.query(async () => {
     const { getUser } = getKindeServerSession()
-    const user = getUser()
+    const user = await getUser()
 
     if (!user.id || !user.email)
       throw new TRPCError({ code: 'UNAUTHORIZED' })
